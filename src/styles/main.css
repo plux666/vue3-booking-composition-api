@@ -1,0 +1,37 @@
+:root {
+  --font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --primary-color: #46b894;
+  --red-color: #FF6363;
+  --text-paragraph-200: #9d9ea0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.header-2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.header-3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: left;
+}
+
+.kv-card {
+  border: 0;
+  border-radius: 16px;
+  padding: 16px;
+  background-color: white;
+}
+
+.bold-text {
+  font-weight: bold;
+}
