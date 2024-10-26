@@ -1,10 +1,3 @@
-export interface RoomGuests1 {
-  adults: number
-  childrenFour: number
-  childrenTen: number
-  childrenSeventeen: number
-}
-
 export interface RoomGuests {
   adults: number
   childrenFour: number
@@ -13,7 +6,7 @@ export interface RoomGuests {
 }
 
 export interface BookedRoom {
-  guests: RoomGuests1
+  guests: RoomGuests
   roomId?: string | number | null
 }
 

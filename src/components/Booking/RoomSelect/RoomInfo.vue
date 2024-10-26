@@ -6,18 +6,17 @@ import {
   CheckOutlined,
 } from '@ant-design/icons-vue'
 
-import {AvailableRoom} from "@/types";
-
+import type { AvailableRoom } from '@/types'
 
 const props = defineProps<{ room: AvailableRoom; chosen: boolean }>()
 
 const emit = defineEmits<{
-  choose: [roomId: string | number]
+  (e: 'choose', roomId: string | number): void
 }>()
 </script>
 
 <template>
-  <div :class="{room: true, 'kv-card': true, 'room--chosen': props.chosen}">
+  <div :class="{ room: true, 'kv-card': true, 'room--chosen': props.chosen }">
     <ACarousel arrows>
       <template #prevArrow>
         <div class="custom-slick-arrow" style="left: 10px; z-index: 1">
@@ -29,30 +28,35 @@ const emit = defineEmits<{
           <right-circle-outlined />
         </div>
       </template>
-      <img v-for="pic in room.pictures" :src="`https://${pic}`" alt="none" />
+      <img
+        v-for="pic in room.pictures"
+        :src="`https://${pic}`"
+        alt="none"
+        :key="pic"
+      />
     </ACarousel>
     <div v-html="room.about" />
-      <AButton
-        class="bold-text"
-        v-if="props.chosen"
-        type="primary"
-        size="large"
-        :style="{ width: '100%' }"
-        :icon="h(CheckOutlined)"
-        @click="$emit('choose', room.rid)"
-      >
-        Номер Выбран
-      </AButton>
-      <AButton
-        v-else
-        class="bold-text"
-        type="primary"
-        size="large"
-        :style="{ width: '100%' }"
-        @click="$emit('choose', room.rid)"
-      >
-        Выбрать
-      </AButton>
+    <AButton
+      class="bold-text"
+      v-if="props.chosen"
+      type="primary"
+      size="large"
+      :style="{ width: '100%' }"
+      :icon="h(CheckOutlined)"
+      @click="$emit('choose', room.rid)"
+    >
+      Номер Выбран
+    </AButton>
+    <AButton
+      v-else
+      class="bold-text"
+      type="primary"
+      size="large"
+      :style="{ width: '100%' }"
+      @click="$emit('choose', room.rid)"
+    >
+      Выбрать
+    </AButton>
   </div>
 </template>
 

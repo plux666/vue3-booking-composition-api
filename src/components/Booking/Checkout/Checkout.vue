@@ -2,8 +2,9 @@
 import { inject } from 'vue'
 
 import { guestsDescription } from '../../__shared/guestsDescription'
+import { roomsKey, type RoomsProvide } from '../roomsProvideKey'
 
-const { bookedRooms } = inject('rooms')
+const { bookedRooms } = inject(roomsKey) as RoomsProvide
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const { bookedRooms } = inject('rooms')
         <p class="checkout__info-value">24.08.2024</p>
       </div>
       <div v-for="(room, index) in bookedRooms" :key="index">
-        <h4>Номер {{index + 1}}</h4>
+        <h4>Номер {{ index + 1 }}</h4>
         <div class="checkout__info-item">
           <p class="checkout__info-type">Номер</p>
           <p class="checkout__info-value">Идентификатор: {{ room.roomId }}</p>
@@ -51,5 +52,6 @@ const { bookedRooms } = inject('rooms')
 .checkout__info-value {
   max-width: 160px;
   text-align: right;
+  color: var(--text-paragraph);
 }
 </style>

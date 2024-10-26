@@ -5,9 +5,9 @@ const props = defineProps<{
   count: number
 }>()
 
-const emits = defineEmits<{
-  onAdd: undefined
-  onRemove: undefined
+const emit = defineEmits<{
+  (e: 'onAdd'): void
+  (e: 'onRemove'): void
 }>()
 </script>
 
@@ -18,7 +18,10 @@ const emits = defineEmits<{
       @click="props.count && $emit('onRemove')"
     />
     {{ props.count }}
-    <PlusCircleOutlined :style="{ fontSize: '23px', color: 'var(--text-paragraph-200)' }" @click="$emit('onAdd')" />
+    <PlusCircleOutlined
+      :style="{ fontSize: '23px', color: 'var(--text-paragraph-200)' }"
+      @click="$emit('onAdd')"
+    />
   </div>
 </template>
 

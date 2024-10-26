@@ -1,4 +1,6 @@
-export const guestsDescription = (guestsData: any) => {
+import type { RoomGuests } from '@/types'
+
+export const guestsDescription = (guestsData: RoomGuests) => {
   const adults = guestsData.adults
   const children = Object.entries(guestsData).reduce((sum, [age, amount]) => {
     if (age !== 'adults') {

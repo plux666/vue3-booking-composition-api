@@ -1,14 +1,18 @@
-<script setup lang="tsx">
-import GuestsCount from '@/components/Booking/Guests/guestsCount.vue'
+<script setup lang="ts">
 import { DeleteOutlined } from '@ant-design/icons-vue'
 import { inject } from 'vue'
 
-const { bookedRooms, addRoom, removeRoom, setGuestsData } = inject('rooms')
+import { roomsKey, type RoomsProvide } from '../roomsProvideKey'
+import GuestsCount from '@/components/Booking/Guests/guestsCount.vue'
+
+const { bookedRooms, addRoom, removeRoom, setGuestsData } = inject(
+  roomsKey,
+) as RoomsProvide
 </script>
 
 <template>
   <h2 class="header-2">Количество гостей</h2>
-  <div v-for="(room, index) in bookedRooms" class="room">
+  <div v-for="(room, index) in bookedRooms" class="room" :key="index">
     <div class="room-head">
       <h3 v-if="bookedRooms.length > 1" class="header-3">
         Номер {{ index + 1 }}

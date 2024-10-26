@@ -1,11 +1,13 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import { provide, ref } from 'vue'
+
+import type { BookedRoom, RoomGuests } from '@/types'
 
 import BuyoutType from '@/components/Booking/BuyoutType.vue'
 import Guests from '@/components/Booking/Guests/Guests.vue'
 import RoomSelect from '@/components/Booking/RoomSelect/RoomSelect.vue'
 import Checkout from '@/components/Booking/Checkout/Checkout.vue'
-import { BookedRoom, RoomGuests } from '@/types'
+import { roomsKey } from './roomsProvideKey'
 
 const bookedRooms = ref<BookedRoom[]>([
   {
@@ -40,7 +42,7 @@ const setBuyoutType = (type: 'self' | 'gift') => {
   step.value = 1
 }
 
-const chooseRoom = (index: number | string, roomId: number | string) => {
+const chooseRoom = (index: number, roomId: number | string) => {
   bookedRooms.value[index].roomId = roomId
 }
 
@@ -62,7 +64,7 @@ const back = () => {
   }
 }
 
-provide('rooms', {
+provide(roomsKey, {
   bookedRooms: bookedRooms.value,
   setGuestsData,
   addRoom,

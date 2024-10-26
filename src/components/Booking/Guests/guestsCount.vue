@@ -1,22 +1,25 @@
 <script setup lang="ts">
+import type { RoomGuests } from '@/types'
+
 import Counter from '@/components/Booking/Guests/Counter.vue'
-import { BookedRoom } from '@/types'
 
 const { index, guestsData } = defineProps<{
   index: number
-  guestsData: BookedRoom
+  guestsData: RoomGuests
 }>()
 
-const emit = defineEmits<{ onChange: [index: number, data: BookedRoom] }>()
+const emit = defineEmits<{
+  (e: 'onChange', index: number, data: RoomGuests): void
+}>()
 
-const onChangeIncrement = (type: keyof BookedRoom) => {
+const onChangeIncrement = (type: keyof RoomGuests) => {
   const newData = { ...guestsData }
 
   newData[type]++
   emit('onChange', index, newData)
 }
 
-const onChangeDecrement = (type: keyof BookedRoom) => {
+const onChangeDecrement = (type: keyof RoomGuests) => {
   const newData = { ...guestsData }
 
   newData[type]--

@@ -1,8 +1,9 @@
 :root {
   --font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   --primary-color: #46b894;
-  --red-color: #FF6363;
+  --red-color: #ff6363;
   --text-paragraph-200: #9d9ea0;
+  --text-paragraph: #434548;
 }
 
 body {
